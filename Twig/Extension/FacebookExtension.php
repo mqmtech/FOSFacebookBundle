@@ -38,6 +38,7 @@ class FacebookExtension extends \Twig_Extension
         return array(
             'facebook_initialize' => new \Twig_Function_Method($this, 'renderInitialize', array('is_safe' => array('html'))),
             'facebook_login_button' => new \Twig_Function_Method($this, 'renderLoginButton', array('is_safe' => array('html'))),
+            'facebook_likeit_button' => new \Twig_Function_Method($this, 'renderLikeitButton', array('is_safe' => array('html'))),
         );
     }
 
@@ -56,7 +57,7 @@ class FacebookExtension extends \Twig_Extension
      */
     public function renderInitialize($parameters = array(), $name = null)
     {
-        return $this->container->get('fos_facebook.helper')->initialize($parameters, $name ?: 'FOSFacebookBundle::initialize.html.twig');
+        return $this->container->get('fos_facebook.helper')->initialize($parameters, $name ?: 'FOSFacebookBundle::initialize2.html.twig');
     }
 
     /**
@@ -65,5 +66,10 @@ class FacebookExtension extends \Twig_Extension
     public function renderLoginButton($parameters = array(), $name = null)
     {
         return $this->container->get('fos_facebook.helper')->loginButton($parameters, $name ?: 'FOSFacebookBundle::loginButton.html.twig');
+    }
+
+    public function renderLikeitButton($parameters = array(), $name = null)
+    {
+        return $this->container->get('fos_facebook.helper')->likeitButton($parameters, $name ?: 'FOSFacebookBundle::likeit.html.twig');
     }
 }

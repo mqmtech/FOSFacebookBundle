@@ -60,7 +60,7 @@ class FacebookHelper extends Helper
             'appId'       => (string) $this->facebook->getAppId(),
             'xfbml'       => false,
             'oauth'       => true,
-            'status'      => false,
+            'status'      => true,
             'cookie'      => true,
             'logging'     => $this->logging,
             'culture'     => $this->culture,
@@ -74,6 +74,13 @@ class FacebookHelper extends Helper
             'autologoutlink' => 'false',
             'label'          => '',
             'scope'          => implode(',', $this->scope),
+        ));
+    }
+
+    public function likeitButton($parameters = array(), $name = null)
+    {
+        $name = $name ?: 'FOSFacebookBundle::likeit.html.twig';
+        return $this->templating->render($name, $parameters + array(
         ));
     }
 
